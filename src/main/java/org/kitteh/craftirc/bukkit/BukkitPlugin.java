@@ -1,6 +1,9 @@
 package org.kitteh.craftirc.bukkit;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kitteh.craftirc.CraftIRC;
 import org.kitteh.craftirc.EndPoint;
@@ -9,7 +12,7 @@ import org.kitteh.craftirc.EndPoint.EndPointTypeGame;
 import org.kitteh.craftirc.api.EndPointType;
 import org.kitteh.craftirc.api.Plugin;
 
-public final class BukkitPlugin extends JavaPlugin implements Plugin {
+public final class BukkitPlugin extends JavaPlugin implements Plugin, Listener {
     private CraftIRC main;
 
     @Override
@@ -19,7 +22,7 @@ public final class BukkitPlugin extends JavaPlugin implements Plugin {
 
     @Override
     public void onEnable() {
-
+        this.getServer().getPluginManager().registerEvents(this, this);
         // Do me last!
         this.main = new CraftIRC(this);
     }
@@ -54,5 +57,10 @@ public final class BukkitPlugin extends JavaPlugin implements Plugin {
         } else {
             throw new IllegalArgumentException("Expected Game EndPoint, received unknown");
         }
+    }
+    
+    @EventHandler
+    public void onChat(AsyncPlayerChatEvent event) {
+        
     }
 }

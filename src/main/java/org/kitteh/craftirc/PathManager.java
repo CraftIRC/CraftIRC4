@@ -14,7 +14,7 @@ import org.kitteh.craftirc.irc.IRCEndPoint;
 public final class PathManager {
     private final CraftIRC craftIRC;
     private final IRCEndPoint ircEndPoint;
-    private final Map<EndPoint<? extends EndPointType>, List<Path>> endPointMap = new ConcurrentHashMap<EndPoint<? extends EndPointType>, List<Path>>();
+    private final Map<EndPoint<?>, List<Path>> endPointMap = new ConcurrentHashMap<EndPoint<?>, List<Path>>();
     private final Map<EndPointType, EndPointHandler> handlers = new ConcurrentHashMap<EndPointType, EndPointHandler>();
 
     public PathManager(CraftIRC craftIRC) {
@@ -57,5 +57,9 @@ public final class PathManager {
         if (this.endPointMap.containsKey(path.getSource())) {
             this.endPointMap.get(path.getSource()).remove(path);
         }
+    }
+    
+    public void handleMessage(EndPoint<?> source, String message) {
+        
     }
 }
