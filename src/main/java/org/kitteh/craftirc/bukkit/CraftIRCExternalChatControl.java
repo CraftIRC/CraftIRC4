@@ -1,4 +1,4 @@
-package org.kitteh.craftirc.bukkit.foryourconsideration;
+package org.kitteh.craftirc.bukkit;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -8,6 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+
+import shared.ExternalChatControl;
 
 public class CraftIRCExternalChatControl implements ExternalChatControl, Listener {
     private final Map<AsyncPlayerChatEvent, Object> map = new WeakHashMap<AsyncPlayerChatEvent, Object>();
@@ -25,6 +27,6 @@ public class CraftIRCExternalChatControl implements ExternalChatControl, Listene
                 return; // Get to tha choppa
             }
         }
-        // Process event
+        // TODO Process event
     }
 }
